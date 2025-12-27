@@ -20,6 +20,22 @@ end
 
 def def_board(board)
   case board
+    # --------------------------------------------------------------
+    # If you want to add more board settings, enter the definition name here.
+    # when '((board definition name))'
+    # PICO_BOARD=((pico-sdk board definition file name))
+    #  (Maybe, pico-sdk/src/boards/include/boards/*.h)
+  when 'weact2350b'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=weact_studio_rp2350b_core -D FLASH_XIP_QSPI_SIZE_MB=16'
+  when 'pimoroniPicoPlus2'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pimoroni_pico_plus2_rp2350 -D FLASH_XIP_QSPI_SIZE_MB=16'
+  when 'pico2_4MB'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2 -D FLASH_XIP_QSPI_SIZE_MB=4'
+  when 'pico2_compat_8MB'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2 -D FLASH_XIP_QSPI_SIZE_MB=8'
+  when 'pico2_compat_16MB'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2 -D FLASH_XIP_QSPI_SIZE_MB=16'
+    # --------------------------------------------------------------
   when 'pico2_w'
     '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2_w -D USE_WIFI=1'
   when 'pico2'
@@ -65,7 +81,11 @@ end
 
 %w[picoruby microruby].each do |vm|
   namespace vm do
-    %w[pico pico_w pico2 pico2_w].each do |board|
+    # --------------------------------------------------------------
+    # If you want to add more board settings, enter the definition name here.
+    # Prepare a file name .rb based on vm, board, and mode in build_config/
+    %w[pico pico_w pico2 pico2_w weact2350b pimoroniPicoPlus2 pico2_4MB pico2_compat_8MB pico2_compat_16MB].each do |board|
+    # --------------------------------------------------------------
       namespace board do
         %w[debug prod].each do |mode|
           desc "Build #{vm} for #{board} (#{mode})"

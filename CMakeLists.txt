@@ -17,6 +17,16 @@ set (R2P2_REVISION  ${CMAKE_REVISION})
 
 project("${R2P2_NAME}-${R2P2_VERSION}-${R2P2_BUILDDATE}-${R2P2_REVISION}")
 
+if(FLASH_XIP_QSPI_SIZE_MB)
+  add_compile_definitions(FLASH_XIP_QSPI_SIZE_MB=${FLASH_XIP_QSPI_SIZE_MB})
+endif()
+
+foreach(def USE_FAT_FLASH_DISK USE_FAT_SD_DISK PICORUBY_MSC_FLASH)
+    if(DEFINED ${def})
+        add_compile_definitions(${def}=1)
+    endif()
+endforeach()
+
 add_compile_options(-Wall
   # int != int32_t as far as the compiler is concerned because gcc has int32_t as long int
   -Wno-format
@@ -94,7 +104,7 @@ endif()
 if(PICO_BOARD STREQUAL "pico" OR PICO_BOARD STREQUAL "pico_w")
   add_compile_definitions(PICO_RP2040=1)
   target_compile_definitions(${PROJECT_NAME} PRIVATE FLASH_TARGET_OFFSET=0x00140000)
-elseif(PICO_BOARD STREQUAL "pico2" OR PICO_BOARD STREQUAL "pico2_w")
+elseif(PICO_BOARD STREQUAL "pico2" OR PICO_BOARD STREQUAL "pico2_w" OR PICO_BOARD STREQUAL "weact_studio_rp2350b_core" OR PICO_BOARD STREQUAL "pimoroni_pico_plus2_rp2350")
   add_compile_definitions(PICO_RP2350=1)
   target_compile_definitions(${PROJECT_NAME} PRIVATE FLASH_TARGET_OFFSET=0x00340000)
 endif()
