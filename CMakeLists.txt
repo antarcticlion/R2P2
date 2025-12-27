@@ -21,7 +21,7 @@ if(FLASH_XIP_QSPI_SIZE_MB)
   add_compile_definitions(FLASH_XIP_QSPI_SIZE_MB=${FLASH_XIP_QSPI_SIZE_MB})
 endif()
 
-foreach(def USE_FAT_FLASH_DISK  )
+foreach(def USE_FAT_FLASH_DISK PICORUBY_MSC_FLASH )
     if(DEFINED ${def})
         add_compile_definitions(${def}=1)
     endif()
