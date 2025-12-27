@@ -3,3 +3,4 @@ build/
 tags
 releases/
 lib/pico-examples/
+run-rake.sh

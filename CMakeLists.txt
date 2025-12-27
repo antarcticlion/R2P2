@@ -21,11 +21,17 @@ if(FLASH_XIP_QSPI_SIZE_MB)
   add_compile_definitions(FLASH_XIP_QSPI_SIZE_MB=${FLASH_XIP_QSPI_SIZE_MB})
 endif()
 
-foreach(def USE_FAT_FLASH_DISK USE_FAT_SD_DISK PICORUBY_MSC_FLASH)
+foreach(def USE_FAT_FLASH_DISK  )
     if(DEFINED ${def})
         add_compile_definitions(${def}=1)
     endif()
 endforeach()
+
+#foreach(def USE_FAT_FLASH_DISK USE_FAT_SD_DISK PICORUBY_MSC_FLASH)
+#    if(DEFINED ${def})
+#        add_compile_definitions(${def}=1)
+#    endif()
+#endforeach()
 
 add_compile_options(-Wall
   # int != int32_t as far as the compiler is concerned because gcc has int32_t as long int
