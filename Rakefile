@@ -25,25 +25,185 @@ def def_board(board)
     # when '((board definition name))'
     # PICO_BOARD=((pico-sdk board definition file name))
     #  (Maybe, pico-sdk/src/boards/include/boards/*.h)
+    #
+    # Compiler definition values​written here will be inherited by CMake.
+    # If you want to write the value 0, be careful to use 0L or 0U, otherwise the compiler definition itself will disappear.
+    # Compiler definition values​to be inherited by rake are written in build_config/*.rb.
   when 'weact2350b'
-    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=weact_studio_rp2350b_core -D FLASH_XIP_QSPI_SIZE_MB=16'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=weact_studio_rp2350b_core ' +
+    '-D FLASH_XIP_QSPI_SIZE_MB=16 ' +
+    '-D PICO_DEFAULT_LED_PIN=25 ' +
+    '-D PICO_DEFAULT_UART_TX_PIN=12 ' +
+    '-D PICO_DEFAULT_UART_RX_PIN=13 ' +
+    '-D PICO_DEFAULT_I2C_SDA_PIN=8 ' +
+    '-D PICO_DEFAULT_I2C_SCL_PIN=9 ' +
+    '-D PICO_DEFAULT_SPI_SCK_PIN=18 ' +
+    '-D PICO_DEFAULT_SPI_TX_PIN=19 ' +
+    '-D PICO_DEFAULT_SPI_RX_PIN=16 ' +
+    '-D PICO_DEFAULT_SPI_CSN_PIN=17 ' +
+    ' '
+  when 'weact2350b_psram'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=weact_studio_rp2350b_core ' +
+    '-D FLASH_XIP_QSPI_SIZE_MB=16 -D RP2350_WITH_PSRAM=1 -D RP2350_PSRAM_CS=0u ' +
+    '-D PICO_DEFAULT_LED_PIN=25 ' +
+    '-D PICO_DEFAULT_UART_TX_PIN=12 ' +
+    '-D PICO_DEFAULT_UART_RX_PIN=13 ' +
+    '-D PICO_DEFAULT_I2C_SDA_PIN=8 ' +
+    '-D PICO_DEFAULT_I2C_SCL_PIN=9 ' +
+    '-D PICO_DEFAULT_SPI_SCK_PIN=18 ' +
+    '-D PICO_DEFAULT_SPI_TX_PIN=19 ' +
+    '-D PICO_DEFAULT_SPI_RX_PIN=16 ' +
+    '-D PICO_DEFAULT_SPI_CSN_PIN=17 ' +
+    ' '
   when 'pimoroniPicoPlus2'
-    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pimoroni_pico_plus2_rp2350 -D FLASH_XIP_QSPI_SIZE_MB=16'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pimoroni_pico_plus2_rp2350 ' +
+    '-D FLASH_XIP_QSPI_SIZE_MB=16 ' +
+    '-D PICO_DEFAULT_LED_PIN=25 ' +
+    '-D PICO_DEFAULT_UART_TX_PIN=0u ' +
+    '-D PICO_DEFAULT_UART_RX_PIN=1 ' +
+    '-D PICO_DEFAULT_I2C_SDA_PIN=4 ' +
+    '-D PICO_DEFAULT_I2C_SCL_PIN=5 ' +
+    '-D PICO_DEFAULT_SPI_SCK_PIN=34 ' +
+    '-D PICO_DEFAULT_SPI_TX_PIN=35 ' +
+    '-D PICO_DEFAULT_SPI_RX_PIN=32 ' +
+    '-D PICO_DEFAULT_SPI_CSN_PIN=33 ' +
+    ' '
+  when 'pimoroniPicoPlus2_psram'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pimoroni_pico_plus2_rp2350 ' +
+    '-D FLASH_XIP_QSPI_SIZE_MB=16 -D RP2350_WITH_PSRAM=1 -D RP2350_PSRAM_CS=47 ' +
+    '-D PICO_DEFAULT_LED_PIN=25 ' +
+    '-D PICO_DEFAULT_UART_TX_PIN=0u ' +
+    '-D PICO_DEFAULT_UART_RX_PIN=1 ' +
+    '-D PICO_DEFAULT_I2C_SDA_PIN=4 ' +
+    '-D PICO_DEFAULT_I2C_SCL_PIN=5 ' +
+    '-D PICO_DEFAULT_SPI_SCK_PIN=34 ' +
+    '-D PICO_DEFAULT_SPI_TX_PIN=35 ' +
+    '-D PICO_DEFAULT_SPI_RX_PIN=32 ' +
+    '-D PICO_DEFAULT_SPI_CSN_PIN=33 ' +
+    ' '
   when 'pico2_4MB'
-    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2 -D FLASH_XIP_QSPI_SIZE_MB=4'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2 ' +
+    '-D FLASH_XIP_QSPI_SIZE_MB=4 ' +
+    '-D PICO_DEFAULT_LED_PIN=25 ' +
+    '-D PICO_DEFAULT_UART_TX_PIN=0u ' +
+    '-D PICO_DEFAULT_UART_RX_PIN=1 ' +
+    '-D PICO_DEFAULT_I2C_SDA_PIN=4 ' +
+    '-D PICO_DEFAULT_I2C_SCL_PIN=5 ' +
+    '-D PICO_DEFAULT_SPI_SCK_PIN=18 ' +
+    '-D PICO_DEFAULT_SPI_TX_PIN=19 ' +
+    '-D PICO_DEFAULT_SPI_RX_PIN=16 ' +
+    '-D PICO_DEFAULT_SPI_CSN_PIN=17 ' +
+    ' '
   when 'pico2_compat_8MB'
-    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2 -D FLASH_XIP_QSPI_SIZE_MB=8'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2 ' +
+    '-D FLASH_XIP_QSPI_SIZE_MB=8 ' +
+    '-D PICO_DEFAULT_LED_PIN=25 ' +
+    '-D PICO_DEFAULT_UART_TX_PIN=0u ' +
+    '-D PICO_DEFAULT_UART_RX_PIN=1 ' +
+    '-D PICO_DEFAULT_I2C_SDA_PIN=4 ' +
+    '-D PICO_DEFAULT_I2C_SCL_PIN=5 ' +
+    '-D PICO_DEFAULT_SPI_SCK_PIN=18 ' +
+    '-D PICO_DEFAULT_SPI_TX_PIN=19 ' +
+    '-D PICO_DEFAULT_SPI_RX_PIN=16 ' +
+    '-D PICO_DEFAULT_SPI_CSN_PIN=17 ' +
+    ' '
   when 'pico2_compat_16MB'
-    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2 -D FLASH_XIP_QSPI_SIZE_MB=16'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2 ' +
+    '-D FLASH_XIP_QSPI_SIZE_MB=16 ' +
+    '-D PICO_DEFAULT_LED_PIN=25 ' +
+    '-D PICO_DEFAULT_UART_TX_PIN=0u ' +
+    '-D PICO_DEFAULT_UART_RX_PIN=1 ' +
+    '-D PICO_DEFAULT_I2C_SDA_PIN=4 ' +
+    '-D PICO_DEFAULT_I2C_SCL_PIN=5 ' +
+    '-D PICO_DEFAULT_SPI_SCK_PIN=18 ' +
+    '-D PICO_DEFAULT_SPI_TX_PIN=19 ' +
+    '-D PICO_DEFAULT_SPI_RX_PIN=16 ' +
+    '-D PICO_DEFAULT_SPI_CSN_PIN=17 ' +
+    ' '
     # --------------------------------------------------------------
   when 'pico2_w'
-    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2_w -D USE_WIFI=1'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2_w -D USE_WIFI=1 ' +
+    '-D CYW43_DEFAULT_PIN_WL_DATA_OUT=24u ' +
+    '-D PICO_FLASH_SIZE_BYTES=4194304u ' +
+    '-D CYW43_WL_GPIO_LED_PIN=0u ' +
+    '-D CYW43_DEFAULT_PIN_WL_DATA_OUT=24u ' +
+    '-D CYW43_DEFAULT_PIN_WL_DATA_IN=24u ' +
+    '-D CYW43_DEFAULT_PIN_WL_HOST_WAKE=24u ' +
+    '-D CYW43_DEFAULT_PIN_WL_CLOCK=29u ' +
+    '-D CYW43_DEFAULT_PIN_WL_REG_ON=23u ' +
+    '-D CYW43_DEFAULT_PIN_WL_CS=25u ' +
+    '-D PICO_DEFAULT_UART_TX_PIN=0u ' +
+    '-D PICO_DEFAULT_UART_RX_PIN=1 ' +
+    '-D PICO_DEFAULT_I2C_SDA_PIN=4 ' +
+    '-D PICO_DEFAULT_I2C_SCL_PIN=5 ' +
+    '-D PICO_DEFAULT_SPI_SCK_PIN=18 ' +
+    '-D PICO_DEFAULT_SPI_TX_PIN=19 ' +
+    '-D PICO_DEFAULT_SPI_RX_PIN=16 ' +
+    '-D PICO_DEFAULT_SPI_CSN_PIN=17 ' +
+    ' '
+  when 'pico2_w_4MB'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2_w -D USE_WIFI=1 ' +
+    '-D FLASH_XIP_QSPI_SIZE_MB=4 ' +
+    '-D PICO_FLASH_SIZE_BYTES=4194304u ' +
+    '-D CYW43_WL_GPIO_LED_PIN=0u ' +
+    '-D CYW43_DEFAULT_PIN_WL_DATA_OUT=24u ' +
+    '-D CYW43_DEFAULT_PIN_WL_DATA_IN=24u ' +
+    '-D CYW43_DEFAULT_PIN_WL_HOST_WAKE=24u ' +
+    '-D CYW43_DEFAULT_PIN_WL_CLOCK=29u ' +
+    '-D CYW43_DEFAULT_PIN_WL_REG_ON=23u ' +
+    '-D CYW43_DEFAULT_PIN_WL_CS=25u ' +
+    '-D PICO_DEFAULT_UART_TX_PIN=0u ' +
+    '-D PICO_DEFAULT_UART_RX_PIN=1 ' +
+    '-D PICO_DEFAULT_I2C_SDA_PIN=4 ' +
+    '-D PICO_DEFAULT_I2C_SCL_PIN=5 ' +
+    '-D PICO_DEFAULT_SPI_SCK_PIN=18 ' +
+    '-D PICO_DEFAULT_SPI_TX_PIN=19 ' +
+    '-D PICO_DEFAULT_SPI_RX_PIN=16 ' +
+    '-D PICO_DEFAULT_SPI_CSN_PIN=17 ' +
+    ' '
   when 'pico2'
-    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2'
+    '-D PICO_PLATFORM=rp2350 -D PICO_BOARD=pico2 ' +
+    '-D PICO_DEFAULT_LED_PIN=25 ' +
+    '-D PICO_DEFAULT_UART_TX_PIN=0u ' +
+    '-D PICO_DEFAULT_UART_RX_PIN=1 ' +
+    '-D PICO_DEFAULT_I2C_SDA_PIN=4 ' +
+    '-D PICO_DEFAULT_I2C_SCL_PIN=5 ' +
+    '-D PICO_DEFAULT_SPI_SCK_PIN=18 ' +
+    '-D PICO_DEFAULT_SPI_TX_PIN=19 ' +
+    '-D PICO_DEFAULT_SPI_RX_PIN=16 ' +
+    '-D PICO_DEFAULT_SPI_CSN_PIN=17 ' +
+    ' '
   when 'pico_w'
-    '-D PICO_PLATFORM=rp2040 -D PICO_BOARD=pico_w -D USE_WIFI=1'
+    '-D PICO_PLATFORM=rp2040 -D PICO_BOARD=pico_w -D USE_WIFI=1 ' +
+    '-D PICO_FLASH_SIZE_BYTES=2097152u ' +
+    '-D CYW43_WL_GPIO_LED_PIN=0u ' +
+    '-D CYW43_DEFAULT_PIN_WL_DATA_OUT=24u ' +
+    '-D CYW43_DEFAULT_PIN_WL_DATA_IN=24u ' +
+    '-D CYW43_DEFAULT_PIN_WL_HOST_WAKE=24u ' +
+    '-D CYW43_DEFAULT_PIN_WL_CLOCK=29u ' +
+    '-D CYW43_DEFAULT_PIN_WL_REG_ON=23u ' +
+    '-D CYW43_DEFAULT_PIN_WL_CS=25u ' +
+    '-D PICO_DEFAULT_UART_TX_PIN=0u ' +
+    '-D PICO_DEFAULT_UART_RX_PIN=1 ' +
+    '-D PICO_DEFAULT_I2C_SDA_PIN=4 ' +
+    '-D PICO_DEFAULT_I2C_SCL_PIN=5 ' +
+    '-D PICO_DEFAULT_SPI_SCK_PIN=18 ' +
+    '-D PICO_DEFAULT_SPI_TX_PIN=19 ' +
+    '-D PICO_DEFAULT_SPI_RX_PIN=16 ' +
+    '-D PICO_DEFAULT_SPI_CSN_PIN=17 ' +
+    ' '
   else
-    '-D PICO_PLATFORM=rp2040 -D PICO_BOARD=pico'
+    '-D PICO_PLATFORM=rp2040 -D PICO_BOARD=pico ' +
+    '-D PICO_DEFAULT_LED_PIN=25 ' +
+    '-D PICO_DEFAULT_UART_TX_PIN=0u ' +
+    '-D PICO_DEFAULT_UART_RX_PIN=1 ' +
+    '-D PICO_DEFAULT_I2C_SDA_PIN=4 ' +
+    '-D PICO_DEFAULT_I2C_SCL_PIN=5 ' +
+    '-D PICO_DEFAULT_SPI_SCK_PIN=18 ' +
+    '-D PICO_DEFAULT_SPI_TX_PIN=19 ' +
+    '-D PICO_DEFAULT_SPI_RX_PIN=16 ' +
+    '-D PICO_DEFAULT_SPI_CSN_PIN=17 ' +
+    ' '
   end
 end
 
@@ -84,7 +244,7 @@ end
     # --------------------------------------------------------------
     # If you want to add more board settings, enter the definition name here.
     # Prepare a file name .rb based on vm, board, and mode in build_config/
-    %w[pico pico_w pico2 pico2_w weact2350b pimoroniPicoPlus2 pico2_4MB pico2_compat_8MB pico2_compat_16MB].each do |board|
+    %w[pico pico_w pico2 pico2_w weact2350b pimoroniPicoPlus2 pico2_4MB pico2_w_4MB pico2_compat_8MB pico2_compat_16MB weact2350b_psram pimoroniPicoPlus2_psram].each do |board|
     # --------------------------------------------------------------
       namespace board do
         %w[debug prod].each do |mode|

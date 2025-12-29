@@ -17,21 +17,37 @@ set (R2P2_REVISION  ${CMAKE_REVISION})
 
 project("${R2P2_NAME}-${R2P2_VERSION}-${R2P2_BUILDDATE}-${R2P2_REVISION}")
 
-if(FLASH_XIP_QSPI_SIZE_MB)
-  add_compile_definitions(FLASH_XIP_QSPI_SIZE_MB=${FLASH_XIP_QSPI_SIZE_MB})
-endif()
+#----------------------------------------------------------------------------
+# additional definitions
+#
 
-foreach(def USE_FAT_FLASH_DISK PICORUBY_MSC_FLASH )
-    if(DEFINED ${def})
-        add_compile_definitions(${def}=1)
-    endif()
+# Relay definition (with variables)
+foreach(def
+    FLASH_XIP_QSPI_SIZE_MB PICO_FLASH_SIZE_BYTES
+    USE_FAT_FLASH_DISK USE_FAT_SD_DISK
+    RP2350_WITH_PSRAM RP2350_PSRAM_CS
+    PICO_DEFAULT_LED_PIN CYW43_WL_GPIO_LED_PIN
+    CYW43_DEFAULT_PIN_WL_DATA_OUT CYW43_DEFAULT_PIN_WL_DATA_IN
+    CYW43_DEFAULT_PIN_WL_HOST_WAKE CYW43_DEFAULT_PIN_WL_CLOCK
+    CYW43_DEFAULT_PIN_WL_REG_ON CYW43_DEFAULT_PIN_WL_CS
+    PICO_DEFAULT_UART_TX_PIN PICO_DEFAULT_UART_RX_PIN
+    PICO_DEFAULT_I2C_SDA_PIN PICO_DEFAULT_I2C_SCL_PIN
+    PICO_DEFAULT_SPI_SCK_PIN PICO_DEFAULT_SPI_TX_PIN
+    PICO_DEFAULT_SPI_RX_PIN PICO_DEFAULT_SPI_CSN_PIN
+  )
+  if(DEFINED ${def})
+    add_compile_definitions(${def}=${${def}})
+  endif()
 endforeach()
 
-#foreach(def USE_FAT_FLASH_DISK USE_FAT_SD_DISK PICORUBY_MSC_FLASH)
-#    if(DEFINED ${def})
-#        add_compile_definitions(${def}=1)
-#    endif()
-#endforeach()
+# Relay definition (definition only) (put 1 for convenience)
+foreach(def PICORUBY_MSC_FLASH)
+  if(DEFINED ${def})
+    add_compile_definitions(${def}=1)
+  endif()
+endforeach()
+
+#----------------------------------------------------------------------------
 
 add_compile_options(-Wall
   # int != int32_t as far as the compiler is concerned because gcc has int32_t as long int
